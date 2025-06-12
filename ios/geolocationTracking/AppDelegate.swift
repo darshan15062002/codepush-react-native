@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import CodePush
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,7 +43,14 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
 #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
 #else
-    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+    CodePush.bundleURL()
 #endif
   }
+
+  override func extraModules(for bridge: RCTBridge) -> [RCTBridgeModule] {
+    var extraModules = super.extraModules(for: bridge)
+    let deploymentKey = ProcessInfo.processInfo.environment["CODEPUSH_KEY"] ?? (DEBUG ? "OAbIOKgE8wu0B2poYmknGnYKcIQa4ksvOXqog" : "iMENspEqqZdJLsxpxuJk0W2jISdm4ksvOXqog")
+    extraModules.append(CodePush(deploymentKey: deploymentKey, bundleURL: bundleURL(),serverURL:"http://13.127.78.239:3000"))
+    return extraModules
+}
 }

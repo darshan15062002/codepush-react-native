@@ -7,11 +7,18 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "bundleAndroid": "npx react-native bundle --platform android  --entry-file index.js  --bundle-output ./bundles/index.android.bundle  --assets-dest ./bundles  --dev false",
+    "bundleIOS": "npx react-native bundle --platform ios  --entry-file index.js  --bundle-output ./bundles/index.ios.bundle  --assets-dest ./bundles  --dev false",
+    "releaseAndroid": "code-push release Android ./bundles 1.0.0 -d Staging  --description 'Initial releas'  --disabled false",
+    "releaseIOS": "code-push release iOS ./bundles 1.0.0 -d Staging  --description 'Initial release'  --disabled false",
+    "codepush": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./bundles/index.android.bundle --assets-dest ./bundles && code-push release testAndroid ./bundles/index.android.bundle 1.0.0 --deploymentName Staging && rm -rf ./bundles"
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.79.2"
+    "react-native": "0.79.2",
+    "react-native-code-push": "^9.0.1",
+    "react-native-network-logger": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

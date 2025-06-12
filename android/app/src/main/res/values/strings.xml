@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">geolocationTracking</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">g3tS6zrJjovTVfh9IGfhhyDxQ7lL4ksvOXqog</string>
+<string moduleConfig="true" name="CodePushServerUrl">http://13.127.78.239:3000</string>
 </resources>

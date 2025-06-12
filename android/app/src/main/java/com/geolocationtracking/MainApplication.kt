@@ -11,6 +11,8 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
+import com.microsoft.codepush.react.CodePush
+import android.util.Log
 
 class MainApplication : Application(), ReactApplication {
 
@@ -19,13 +21,14 @@ class MainApplication : Application(), ReactApplication {
         override fun getPackages(): List<ReactPackage> =
             PackageList(this).packages.apply {
               // Packages that cannot be autolinked yet can be added manually here, for example:
+              // add(CodePush(if (BuildConfig.DEBUG) "g3tS6zrJjovTVfh9IGfhhyDxQ7lL4ksvOXqog" else "A68DGaa8L4ADbU0nIMJRDwlTjBr04ksvOXqog", applicationContext, BuildConfig.DEBUG,"http://13.127.78.239:3000"))
               // add(MyReactNativePackage())
             }
 
         override fun getJSMainModuleName(): String = "index"
 
         override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
-
+        override fun getJSBundleFile(): String? = CodePush.getJSBundleFile()
         override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
         override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
       }
