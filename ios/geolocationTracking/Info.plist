@@ -52,5 +52,11 @@
 	<string>lVBhXGHXAHKGRu8zT0kJrtItcjKk4ksvOXqog</string>
 	<key>CodePushServerURL</key>
 	<string>http://13.127.78.239:3000</string>
+
+	<key>NSAppTransportSecurity</key>
+	<dict>
+    	<key>NSAllowsArbitraryLoads</key>
+    	<true/>
+	</dict>
 </dict>
 </plist>

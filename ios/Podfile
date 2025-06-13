@@ -15,6 +15,8 @@ if linkage != nil
 end
 
 target 'geolocationTracking' do
+ # In Podfile, replace CodePush line with:
+  pod 'CodePush', :path => '../node_modules/react-native-code-push', :modular_headers => true
   config = use_native_modules!
 
   use_react_native!(
@@ -22,7 +24,7 @@ target 'geolocationTracking' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+  
 
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
