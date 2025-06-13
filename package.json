@@ -12,12 +12,14 @@
     "bundleIOS": "npx react-native bundle --platform ios  --entry-file index.js  --bundle-output ./bundles/index.ios.bundle  --assets-dest ./bundles  --dev false",
     "releaseAndroid": "code-push release Android ./bundles 1.0.0 -d Staging  --description 'Initial releas'  --disabled false",
     "releaseIOS": "code-push release iOS ./bundles 1.0.0 -d Staging  --description 'Initial release'  --disabled false",
-    "codepush": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./bundles/index.android.bundle --assets-dest ./bundles && code-push release testAndroid ./bundles/index.android.bundle 1.0.0 --deploymentName Staging && rm -rf ./bundles"
+    "codepush:android": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./bundles/index.android.bundle --assets-dest ./bundles && code-push release testAndroid ./bundles/index.android.bundle 1.0.0 --deploymentName Staging && rm -rf ./bundles",
+    "codepush:ios": "npx react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ./bundles/main.jsbundle --assets-dest ./bundles && code-push release testiOS ./bundles 1.0.0 --deploymentName Staging && rm -rf ./bundles",
+    "codepush:both": "npm run codepush:android && npm run codepush:ios"
   },
   "dependencies": {
     "react": "19.0.0",
     "react-native": "0.79.2",
-    "react-native-code-push": "^9.0.1",
+    "react-native-code-push": "^7.0.5",
     "react-native-network-logger": "^2.0.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 // App.js - Complete implementation with network logger
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, Alert, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, Button, Alert, TouchableOpacity, Modal, SafeAreaView } from 'react-native';
 import CodePush from 'react-native-code-push';
 import NetworkLogger, { startNetworkLogging } from 'react-native-network-logger';
 import CodePushManager from './codepush-config.js';
@@ -73,7 +73,7 @@ const App = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center', padding: 20 }}>
+    <SafeAreaView style={{paddingTop:20, flex: 1, justifyContent: 'center', padding: 20 }}>
       <TouchableOpacity onPress={handleTripleTap} style={{ alignItems: 'center', marginBottom: 20 }}>
         <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>
           CodePush with Network Logger
@@ -111,10 +111,10 @@ const App = () => {
             <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Network Logs</Text>
             <Button title="Close" onPress={() => setShowNetworkLogger(false)} />
           </View>
-          <NetworkLogger />
+          <NetworkLogger  />
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 };
 
